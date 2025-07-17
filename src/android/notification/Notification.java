@@ -221,12 +221,12 @@ public final class Notification {
 
             PendingIntent pi = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-                    pi = PendingIntent.getBroadcast(
-                        context, 0, intent, PendingIntent.FLAG_IMMUTABLE | FLAG_CANCEL_CURRENT);
-            } else {
-                    pi = PendingIntent.getBroadcast(
-                        context, 0, intent, FLAG_CANCEL_CURRENT);
-            }
+        pi = PendingIntent.getBroadcast(
+        context, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT);
+        } else {
+        pi = PendingIntent.getBroadcast(
+        context, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT);
+        }
 
             Log.d(TAG, "Schedule notification, trigger-date: " + date + ", canScheduleExactAlarms: " + canScheduleExactAlarms + ", prio: " + options.getPrio());
 
@@ -343,13 +343,14 @@ public final class Notification {
             Intent intent = new Intent(action);
 
             PendingIntent pi = null;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            pi = PendingIntent.getBroadcast(
-            context, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT);
-            } else {
-            pi = PendingIntent.getBroadcast(
-            context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-            }
+           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        pi = PendingIntent.getBroadcast(
+        context, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT);
+        } else {
+        pi = PendingIntent.getBroadcast(
+        context, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT);
+        }
+
 
             if (pi != null) {
                 getAlarmMgr().cancel(pi);
