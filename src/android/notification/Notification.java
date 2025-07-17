@@ -343,12 +343,12 @@ public final class Notification {
             Intent intent = new Intent(action);
 
             PendingIntent pi = null;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-                pi = PendingIntent.getBroadcast(
-                    context, 0, intent, PendingIntent.FLAG_IMMUTABLE  );
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            pi = PendingIntent.getBroadcast(
+            context, 0, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT);
             } else {
-                pi = PendingIntent.getBroadcast(
-                    context, 0, intent, 0);
+            pi = PendingIntent.getBroadcast(
+            context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
             }
 
             if (pi != null) {
